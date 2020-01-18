@@ -9,13 +9,22 @@ class RewiewersTypesController extends Controller
 {
     public function show()
     {
-        return view('category.show');
+        $categories = RewiewersTypes::all();
+        foreach($categories as $category)
+        {     
+            if(!empty($category->subsidiary))
+            {
+                $category->subcategoryTitle = RewiewersTypes::find($category->subsidiary)->title;
+            }
+        }
+        return view('category.show', ['categories' => $categories]);
     }
 
     public function create()
     {
-        return view('category.create');
+        $categories = RewiewersTypes::whereNull('subsidiary')->get();
 
+        return view('category.create', ['categories' => $categories]);
     }
 
     public function store(Request $request)
@@ -24,8 +33,18 @@ class RewiewersTypesController extends Controller
             'category' => ['required', 'string', 'max:255'],
         ]);
 
-        RewiewersTypes::create([
-            'title' => $request['category'],
-        ]);
+        if(isset($request['subcategory']))
+        {
+            RewiewersTypes::create([
+                'title' => $request['subcategory'],
+                'subsidiary' => $request['category'],
+            ]);
+        } else {
+            RewiewersTypes::create([
+                'title' => $request['category'],
+            ]);
+        }
+
+        return redirect()->route('category.show');
     }
 }

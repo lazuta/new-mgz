@@ -44,6 +44,9 @@
                                 <div class="form-group">
                                     <select class="form-control" name="category" required>
                                         <option disabled selected>Выберите категорию</option>
+                                        @foreach ($categories as $item)
+                                            <option value="{{ $item->id }}">{{ $item->title }}</option>  
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
