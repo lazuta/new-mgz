@@ -18,3 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('article')->group(function() {
+    // Route::get('/', '')->name('article.show');
+});
+
+Route::prefix('category')->group(function() {
+    Route::get('/', 'RewiewersTypesController@show')->name('category.show');
+});
