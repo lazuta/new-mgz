@@ -8,7 +8,7 @@
                 <div class="card-header">Категории</div>
 
                 <div class="card-body">
-                    You are logged in!
+                    {{-- sout --}}
                 </div>
             </div>
         </div>

@@ -18,6 +18,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    {{-- TODO: перенести в файл --}}
+    <style>
+        .errors {
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
