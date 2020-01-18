@@ -10,6 +10,7 @@ class RewiewersTypesController extends Controller
     public function show()
     {
         $categories = RewiewersTypes::all();
+
         foreach($categories as $category)
         {     
             if(!empty($category->subsidiary))
@@ -17,6 +18,7 @@ class RewiewersTypesController extends Controller
                 $category->subcategoryTitle = RewiewersTypes::find($category->subsidiary)->title;
             }
         }
+        
         return view('category.show', ['categories' => $categories]);
     }
 
