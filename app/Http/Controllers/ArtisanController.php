@@ -28,8 +28,26 @@ class ArtisanController extends Controller
         return view('article.create', ['categories' => $categories]);
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'category' => ['required'],
+            'file' => ['required', 'mimes:docx,pdf,doc,html']
+        ],[
+            'title.required' => 'Заголовок не может быть пустым.',
+            'title.max' => 'Название статьи превышает 255 символов.',
+            'category.required' => 'Категория не может быть пустой.',
+            'file.required' => 'Выберите файл.',
+            'file.mimes' => 'Недопустимый формат файла.'
+        ]);
 
+        $path = '/storage/' + $request->file('file')->store('files', 'public');
+        $categoryID = RewiewersTypes::find($request['category'])->get();
+
+        Articles::create([
+            'title' => $request['title'],
+            'reviewers_types_id' => $categoryID,
+        ]);
     }
 }
