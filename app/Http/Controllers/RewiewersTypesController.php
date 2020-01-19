@@ -33,6 +33,9 @@ class RewiewersTypesController extends Controller
     {
         $validatedData = $request->validate([
             'category' => ['required', 'string', 'max:255'],
+        ], [
+            'category.required' => 'Название категории не может быть пустым.',
+            'category.max' => 'Название категории превышает 255 символов.'
         ]);
 
         if(isset($request['subcategory']))

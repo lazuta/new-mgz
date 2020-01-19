@@ -42,7 +42,7 @@ class ArtisanController extends Controller
             'file.mimes' => 'Недопустимый формат файла.'
         ]);
 
-        $path = '/storage/' + $request->file('file')->store('files', 'public');
+        $path = '/storage/' . $request->file('file')->store('files', 'public');
         $categoryID = RewiewersTypes::find($request['category'])->get();
 
         Articles::create([

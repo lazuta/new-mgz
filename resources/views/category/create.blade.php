@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             
-            {{-- TODO: Подключить вывод ошибок --}}
+            @include('components.errors')
 
             <div class="card">
                 <div class="card-header">Главная > Категории > <i>Создание</i></div>
