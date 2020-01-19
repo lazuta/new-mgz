@@ -20,9 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('article')->group(function() {
-    Route::get('/', 'ArtisanController@show')->name('article.show');
-    Route::get('/create', 'ArtisanController@create')->name('article.create');
-    Route::post('/store', 'ArtisanController@store')->name('article.store');
+    Route::get('/', 'ArticlesController@show')->name('article.show');
+    Route::get('/create', 'ArticlesController@create')->name('article.create');
+    Route::post('/store', 'ArticlesController@store')->name('article.store');
 });
 
 Route::prefix('category')->group(function() {

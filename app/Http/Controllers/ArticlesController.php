@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Files;
 use App\Articles;
 use App\RewiewersTypes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class ArtisanController extends Controller
+class ArticlesController extends Controller
 {
     public function show()
-    {
-        return view('article.show');
+    {   
+        $articles = Articles::all();
+        
+        return view('article.show', ['articles' => $articles]);
     }
 
     public function create()
@@ -43,11 +48,20 @@ class ArtisanController extends Controller
         ]);
 
         $path = '/storage/' . $request->file('file')->store('files', 'public');
-        $categoryID = RewiewersTypes::find($request['category'])->get();
+        $categoryID = RewiewersTypes::find($request['category'])->first();
 
-        Articles::create([
+        $article = Articles::create([
             'title' => $request['title'],
-            'reviewers_types_id' => $categoryID,
+            'user_id' => Auth::id(),
+            'reviewers_types_id' => $categoryID->id,
         ]);
+
+        Files::create([
+            'file_path' => $path,
+            'upload_at' => date('Y-m-d G:i:s'),
+            'article_id' => $article->id
+        ]);
+
+        return redirect()->route('article.show');
     }
 }

@@ -8,11 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Articles extends Model
 {   
     protected $fillable = [
-        'title ', 'posted ', 'user_id', 'reviewers_types_id'
+        'title', 'user_id', 'reviewers_types_id'
     ];
 
-    public function user()
+    public function rewiewerType()
     {
-        return $this->belongsTo('App\User');
+        return $this->hasOne('App\RewiewersTypes');
+    }
+
+    public function files()
+    {
+        return $this->hasMany('App\Files');
     }
 }

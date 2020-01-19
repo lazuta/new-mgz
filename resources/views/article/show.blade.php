@@ -8,7 +8,9 @@
                 <div class="card-header">Статьи</div>
 
                 <div class="card-body">
-
+                    @foreach ($articles as $article)
+                        {{dd($article)}}
+                    @endforeach
                     <a class="btn btn-primary" role="button"  href="{{ route('article.create') }}">Создать статью </a>
                 </div>
             </div>

@@ -11,4 +11,9 @@ class RewiewersTypes extends Model
     protected $fillable = [
         'title', 'subsidiary'
     ];
+
+    public function atricle()
+    {
+        return $this->belongsTo('App\Atricles');
+    }
 }
