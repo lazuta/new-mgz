@@ -25,6 +25,11 @@
             margin-bottom: 0px;
             padding-bottom: 0px;
         }
+
+        .message_form {
+            margin-top: 20px;
+            
+        }
     </style>
 </head>
 <body>

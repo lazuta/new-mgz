@@ -31,3 +31,7 @@ Route::prefix('category')->group(function() {
     Route::get('/create', 'RewiewersTypesController@create')->name('category.create');
     Route::post('/store', 'RewiewersTypesController@store')->name('category.store');
 });
+
+Route::prefix('message')->group(function() {
+    Route::post('/store', 'CommentsController@store')->name('comment.store');
+});

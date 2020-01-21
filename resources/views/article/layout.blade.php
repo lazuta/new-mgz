@@ -13,6 +13,8 @@
                         @foreach ($article->file as $item)
                             <a href="{{ $item->file_path }}"> Ссылка</a>
                         @endforeach
+
+                        @include('comment.create')
                     </div>
                 </div>
             </div>

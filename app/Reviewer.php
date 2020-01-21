@@ -17,7 +17,7 @@ class Reviewer extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User', 'user_id', 'id');
+        return $this->belongsToMany('App\User', 'user_id', 'id');
     }
 
     public function comment()
