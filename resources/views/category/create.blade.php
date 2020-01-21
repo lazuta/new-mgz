@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             
-            {{-- TODO: Подключить вывод ошибок --}}
+            @include('components.errors')
 
             <div class="card">
                 <div class="card-header">Главная > Категории > <i>Создание</i></div>
@@ -44,6 +44,9 @@
                                 <div class="form-group">
                                     <select class="form-control" name="category" required>
                                         <option disabled selected>Выберите категорию</option>
+                                        @foreach ($categories as $item)
+                                            <option value="{{ $item->id }}">{{ $item->title }}</option>  
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">

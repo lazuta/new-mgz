@@ -84,5 +84,18 @@
             @yield('content')
         </main>
     </div>
+
+    <footer>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                crossorigin="anonymous">
+        </script>
+        {{-- TODO: Create individual file--}}
+        <script>
+            $("#success-alert").fadeTo(5000, 500).slideUp(500, function(){
+                $("#success-alert").slideUp(500);
+            });
+        </script>
+    </footer>
 </body>
 </html>
