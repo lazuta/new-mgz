@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\File;
 use App\Article;
-use App\RewiewersTypes;
+use App\RewiewerType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,13 +38,13 @@ class ArticlesController extends Controller
 
     public function create()
     {
-        $categories = RewiewersTypes::all();
+        $categories = RewiewerType::all();
 
         foreach ($categories as $category)
         {     
             if (!empty($category->subsidiary))
             {
-                $category->subcategoryTitle = RewiewersTypes::find($category->subsidiary)->title;
+                $category->subcategoryTitle = RewiewerType::find($category->subsidiary)->title;
             }
         }
 
@@ -66,7 +66,7 @@ class ArticlesController extends Controller
         ]);
 
         $path = '/storage/' . $request->file('file')->store('files', 'public');
-        $categoryID = RewiewersTypes::find($request['category']);
+        $categoryID = RewiewerType::find($request['category']);
 
         $article = Article::create([
             'title' => $request['title'],

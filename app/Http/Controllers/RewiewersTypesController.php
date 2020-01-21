@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\RewiewersTypes;
+use App\RewiewerType;
 use Illuminate\Http\Request;
 
 class RewiewersTypesController extends Controller
 {
     public function show()
     {
-        $categories = RewiewersTypes::all();
+        $categories = RewiewerType::all();
 
         foreach($categories as $category)
         {     
             if(!empty($category->subsidiary))
             {
-                $category->subcategoryTitle = RewiewersTypes::find($category->subsidiary)->title;
+                $category->subcategoryTitle = RewiewerType::find($category->subsidiary)->title;
             }
         }
         
@@ -24,7 +24,7 @@ class RewiewersTypesController extends Controller
 
     public function create()
     {
-        $categories = RewiewersTypes::whereNull('subsidiary')->get();
+        $categories = RewiewerType::whereNull('subsidiary')->get();
 
         return view('category.create', ['categories' => $categories]);
     }
@@ -40,12 +40,12 @@ class RewiewersTypesController extends Controller
 
         if(isset($request['subcategory']))
         {
-            RewiewersTypes::create([
+            RewiewerType::create([
                 'title' => $request['subcategory'],
                 'subsidiary' => $request['category'],
             ]);
         } else {
-            RewiewersTypes::create([
+            RewiewerType::create([
                 'title' => $request['category'],
             ]);
         }
