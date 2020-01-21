@@ -16,7 +16,7 @@ class ArticlesController extends Controller
         $articles = Article::all();
 
         foreach ($articles as $article)
-        {
+        {   
             if (empty($article->posted)) {
                 $article->status = "Ожидает просмотра";
             } elseif($article->posted = 1) {

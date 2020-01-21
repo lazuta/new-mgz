@@ -20,4 +20,14 @@ class Article extends Model
     {
         return $this->hasMany('App\File', 'id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'user_id', 'id');
+    }
+
+    public function reviewer()
+    {
+        return $this->hasOne('App\Reviewer', 'id');
+    }
 }
