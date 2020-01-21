@@ -12,8 +12,8 @@ class RewiewersTypes extends Model
         'title', 'subsidiary'
     ];
 
-    public function atricle()
+    public function article()
     {
-        return $this->belongsTo('App\Atricles');
+        return $this->hasMany('App\Atricle');
     }
 }

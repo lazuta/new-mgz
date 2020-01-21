@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 
-class Articles extends Model
+class Article extends Model
 {   
     protected $fillable = [
         'title', 'user_id', 'reviewers_types_id'
@@ -13,11 +13,11 @@ class Articles extends Model
 
     public function rewiewerType()
     {
-        return $this->hasOne('App\RewiewersTypes');
+        return $this->belongsTo('App\RewiewersTypes', 'reviewers_types_id', 'id');
     }
 
-    public function files()
+    public function file()
     {
-        return $this->hasMany('App\Files');
+        return $this->hasMany('App\File', 'id');
     }
 }

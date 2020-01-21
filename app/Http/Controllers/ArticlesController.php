@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\Files;
-use App\Articles;
+use App\File;
+use App\Article;
 use App\RewiewersTypes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,18 +13,36 @@ class ArticlesController extends Controller
 {
     public function show()
     {   
-        $articles = Articles::all();
+        $articles = Article::all();
+
+        foreach ($articles as $article)
+        {
+            if (empty($article->posted)) {
+                $article->status = "Ожидает просмотра";
+            } elseif($article->posted = 1) {
+                $article->status = "Одобрено к публикации";
+            } else {
+                $article->status = "Не одобрено к публикации";
+            }
+        }
         
         return view('article.show', ['articles' => $articles]);
+    }
+
+    public function showArticle($id)
+    {
+        $article = Article::find($id);
+        
+        return view('article.layout', ['article' => $article]);
     }
 
     public function create()
     {
         $categories = RewiewersTypes::all();
 
-        foreach($categories as $category)
+        foreach ($categories as $category)
         {     
-            if(!empty($category->subsidiary))
+            if (!empty($category->subsidiary))
             {
                 $category->subcategoryTitle = RewiewersTypes::find($category->subsidiary)->title;
             }
@@ -48,15 +66,15 @@ class ArticlesController extends Controller
         ]);
 
         $path = '/storage/' . $request->file('file')->store('files', 'public');
-        $categoryID = RewiewersTypes::find($request['category'])->first();
+        $categoryID = RewiewersTypes::find($request['category']);
 
-        $article = Articles::create([
+        $article = Article::create([
             'title' => $request['title'],
             'user_id' => Auth::id(),
             'reviewers_types_id' => $categoryID->id,
         ]);
 
-        Files::create([
+        File::create([
             'file_path' => $path,
             'upload_at' => date('Y-m-d G:i:s'),
             'article_id' => $article->id
