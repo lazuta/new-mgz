@@ -14,6 +14,6 @@ class RewiewerType extends Model
 
     public function article()
     {
-        return $this->hasMany('App\Atricle');
+        return $this->hasMany('App\Atricle', 'id');
     }
 }

@@ -60,13 +60,13 @@ class ArticlesController extends Controller
         $validatedData = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'category' => ['required'],
-            'file' => ['required', 'mimes:docx,pdf,doc,html']
+            'file' => ['required', 'mimes:docx,pdf,doc,html'],
         ],[
             'title.required' => 'Заголовок не может быть пустым.',
             'title.max' => 'Название статьи превышает 255 символов.',
             'category.required' => 'Категория не может быть пустой.',
             'file.required' => 'Выберите файл.',
-            'file.mimes' => 'Недопустимый формат файла.'
+            'file.mimes' => 'Недопустимый формат файла.',
         ]);
 
         $path = '/storage/' . $request->file('file')->store('files', 'public');

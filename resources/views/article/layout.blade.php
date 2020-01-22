@@ -10,12 +10,27 @@
             <div class="card">
                 <div class="card-header"> {{ $article->title }} </div>
                 <div class="card-body">
+                    <p>{{ $article->rewiewerType->title }}</p>
+                    <p>{{ $article->reviewer->description }}</p>
                     @foreach ($article->file as $item)
-                        <a href="{{ $item->file_path }}"> Ссылка</a>
+                        <a href="{{ $item->file_path }}"> <p>Ссылка</p></a>
                     @endforeach
-
-                    @include('comment.create')
+                    <p>
+                        Текущая оценка:
+                        @if ($article->reviewer->mark == 3)
+                            <span class="badge badge-success">хорошо</span>.
+                        @elseif ($article->reviewer->mark == 2)
+                            <span class="badge badge-warning">удовлетворительно</span>.
+                        @elseif (empty($article->reviewer->mark))
+                            <span class="badge badge-light">оценка не поставлена</span>.
+                        @else
+                            <span class="badge badge-danger">плохо</span>.
+                        @endif
+                    </p>
                 </div>
+
+                @include('comment.create')
+
             </div>
             @foreach ($comments as $comment)
             <div class="card comment-card">
@@ -23,9 +38,9 @@
                     <div>
                         <b class="comment-name">{{ $comment->user->name }}</b>
 
-                        @if($comment->approved == 1)
+                        @if ($comment->approved == 1)
                             <span class="badge badge-success">Одбрена к публикации</span>
-                        @elseif($comment->approved == 0)
+                        @elseif ($comment->approved == 0)
                             <span class="badge badge-danger">Отказано в публикации</span>
                         @else
                             <span class="badge badge-warning">Требуется доработка</span>

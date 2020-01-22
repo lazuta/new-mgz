@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Reviewer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,8 +33,9 @@ class CommentsController extends Controller
             'reviews_id' => $request['id'],
             'user_id' => Auth::id()
         ]);
-        
 
+        Reviewer::find($request['id'])->update(['mark' => $request['mark']]);
+        
         return redirect()->back();
     }
 }

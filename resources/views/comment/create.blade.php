@@ -1,4 +1,4 @@
-<div class="list-group-item message_form">
+<div class="card-footer message_form">
     <h5 class="card-title">Добавить комментарий</h5>
     <form action="{{ route('comment.store') }}" method="POST" >
         @csrf
@@ -7,11 +7,19 @@
             <textarea type="text" class="form-control" name="comment" id="comment" aria-describedby="comment" placeholder="Введите заголовок"></textarea>
         </div>
         <div class="form-group">
+            <select class="form-control" name="mark">
+                <option disabled selected>Оценка</option>
+                <option value="3">Хорошо</option>
+                <option value="2">Удовлетворительно</option>
+                <option value="1">Плохо</option>
+            </select>
+        </div>
+        <div class="form-group">
             <select class="form-control" name="approved">
                 <option disabled selected>Решение</option>
                 <option value="1">Допустить к публикаиции</option>
                 <option value="0">Отказать в публикаиции</option>
-                <option>Требутеся доработка</option>
+                <option value="2">Требутеся доработка</option>
             </select>
         </div>
         <button type="submit" class="btn btn-primary mb-2">Отправить</button>
