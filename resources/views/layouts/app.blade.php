@@ -28,7 +28,14 @@
 
         .message_form {
             margin-top: 20px;
-            
+        }
+
+        .comment-card {
+            margin-top: 20px;
+        }
+        
+        .comment-name {
+            margin-right: 8px;
         }
     </style>
 </head>

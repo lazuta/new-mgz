@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\File;
+use App\Comment;
 use App\Article;
+use App\Reviewer;
 use App\RewiewerType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class ArticlesController extends Controller
 {
     public function show()
-    {   
+    {           
         $articles = Article::all();
 
         foreach ($articles as $article)
@@ -30,10 +32,12 @@ class ArticlesController extends Controller
     }
 
     public function showArticle($id)
-    {
+    {   
         $article = Article::find($id);
-        
-        return view('article.layout', ['article' => $article]);
+
+        $comments = Comment::where('reviews_id', $id)->orderBy('created_at','DESC')->get();
+                
+        return view('article.layout', ['article' => $article], ['comments' => $comments]);
     }
 
     public function create()
@@ -77,6 +81,12 @@ class ArticlesController extends Controller
         File::create([
             'file_path' => $path,
             'upload_at' => date('Y-m-d G:i:s'),
+            'article_id' => $article->id
+        ]);
+
+        Reviewer::create([
+            'description' => $request['description'],
+            'user_id' => Auth::id(),
             'article_id' => $article->id
         ]);
 

@@ -14,11 +14,11 @@ class Comment extends Model
 
     public function user()
     {
-        return $this->belongsToMany('App\User', 'user_id', 'id');
+        return $this->belongsTo('App\User', 'user_id', 'id');
     }
 
     public function review()
     {
-        return $this->belongsToMany('App\Reviewer', 'reviews_id', 'id');
+        return $this->belongsTo('App\Reviewer', 'reviews_id', 'id');
     }
 }

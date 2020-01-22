@@ -10,7 +10,6 @@ class CommentsController extends Controller
 {
     public function show() 
     {
-
     }
 
     public function store(Request $request)
@@ -22,16 +21,16 @@ class CommentsController extends Controller
             'comment.max' => 'Комментарий превышает 255 символов.'
         ]);
            
-        $approved = null;
+        $approved = NULL;
 
-        if (!empty($request['approved']))
+        if (!empty($request['approved']) || $request['approved'] != 2)
             $approved = $request['approved'];
-
+        
         $comment = Comment::create([
             'body' => $request['comment'],
             'approved' => $approved,
             'reviews_id' => $request['id'],
-            'user_id' => Auth::id(),
+            'user_id' => Auth::id()
         ]);
         
 
