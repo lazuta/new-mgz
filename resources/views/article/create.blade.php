@@ -21,13 +21,16 @@
                             <select class="form-control" name="category" required>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">
-                                        @if($category->subcategoryTitle)
-                                        {{ $category->subcategoryTitle }} - 
+                                        @if ($category->subcategoryTitle)
+                                            {{ $category->subcategoryTitle }} - 
                                         @endif
-                                        {{ $category->title }}
+                                            {{ $category->title }}
                                     </option>
                                 @endforeach
                             </select>
+                            <small class="form-text text-muted">
+                                Добавление <i><a href="{{ route('category.create') }}">категории</a></i>
+                            </small>
                         </div>
                         <div class="form-group">
                             <label for="file">Загрузка файла</label>

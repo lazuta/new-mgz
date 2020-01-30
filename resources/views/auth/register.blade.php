@@ -47,7 +47,7 @@
                                     <option disabled>Выберите роль</option>
                                     <option value="author">Автор</option>
                                     <option value="reviewer">Рецинзент</option>
-                                    <option value="corector">Корректор</option>
+                                    <option value="corrector">Корректор</option>
                                 </select>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
