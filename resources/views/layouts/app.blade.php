@@ -53,7 +53,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -75,6 +75,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('article.show') }}">Статьи</a>
+                                    <a class="dropdown-item" href="{{ route('article.create') }}">Создание статьи</a>
+                                    <a class="dropdown-item" href="{{ route('category.show') }}">Категории</a>
+                                    <a class="dropdown-item" href="{{ route('article.store') }}">Создание категории</a>
+                                    <hr>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
