@@ -26,4 +26,9 @@ class Reviewer extends Model
     {
         return $this->hasMany('App\Comment', 'id');
     }
+
+    public function reviewers()
+    {
+        return $this->hasMany('App\UserReviewer', 'id');
+    }
 }

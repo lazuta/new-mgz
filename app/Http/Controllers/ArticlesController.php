@@ -55,7 +55,7 @@ class ArticlesController extends Controller
         return view('article.create', ['categories' => $categories]);
     }
 
-    public function store(Request $request)
+    public function storege(Request $request)
     {
         $validatedData = $request->validate([
             'title' => ['required', 'string', 'max:255'],
@@ -91,5 +91,46 @@ class ArticlesController extends Controller
         ]);
 
         return redirect()->route('article.show');
+    }
+
+    public function edit($id)
+    {
+        $article = Article::find($id);
+
+        $categories = RewiewerType::all();
+
+        foreach ($categories as $category)
+        {     
+            if (!empty($category->subsidiary))
+            {
+                $category->subcategoryTitle = RewiewerType::find($category->subsidiary)->title;
+            }
+        }
+
+        return view('article.edit', ['article' => $article, 'categories' => $categories]);
+    }
+
+    public function save(Request $request, $id)
+    {   
+        if(!empty($request['file']))
+        {
+            $path = '/storage/' . $request->file('file')->store('files', 'public');
+
+            File::create([
+                'file_path' => $path,
+                'article_id' => $id
+            ]);
+        }
+
+        Article::find($id)->update([
+            'title' => $request['title'],
+            'reviewers_types_id' => $request['category']
+        ]);
+
+        Reviewer::where('article_id', $id)->update([
+            'description' => $request['description']
+        ]);
+
+        return redirect()->route('article.showArticle', $id);
     }
 }

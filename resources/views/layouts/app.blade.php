@@ -37,6 +37,19 @@
         .comment-name {
             margin-right: 8px;
         }
+
+        .w-75 {
+            margin-bottom: 10px;
+        }
+
+        .m-l {
+            margin-left: 10px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+        }
     </style>
 </head>
 <body>

@@ -8,7 +8,7 @@
             @include('components.errors')
 
             <div class="card">
-                <div class="card-header"> {{ $article->title }} </div>
+                <div class="card-header d-flex justify-content-between"> {{ $article->title }} <a href="{{ route('article.edit', $article->id) }}">Изменить</a></div>
                 <div class="card-body">
                     <p>{{ $article->rewiewerType->title }}</p>
                     <p>{{ $article->reviewer->description }}</p>
