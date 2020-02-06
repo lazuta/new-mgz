@@ -18,7 +18,7 @@ class CreateUserReviewersTable extends Migration
             $table->bigInteger('user_id')->nullable()->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->bigInteger('reviewers_id')->nullable()->unsigned();
-            $table->foreign('reviewers_id')->references('id')->on('reviewers_types')->onDelete('cascade');
+            $table->foreign('reviewers_id')->references('id')->on('reviews')->onDelete('cascade');
             $table->timestamps();
         });
         

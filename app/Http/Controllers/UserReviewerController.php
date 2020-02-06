@@ -16,8 +16,8 @@ class UserReviewerController extends Controller
         ]);
 
         UserReviewer::create([
-            'user_id' => $request['invisible'],
-            'reviews_id' => $request['rewiewer']
+            'user_id' => $request['rewiewer'],
+            'reviewers_id' => $request['invisible']
         ]);
 
         return redirect()->back();

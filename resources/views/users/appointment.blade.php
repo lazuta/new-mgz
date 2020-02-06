@@ -29,7 +29,11 @@
                                 <button type="submit" class="btn btn-secondary">Утвердить</button>
                             </div>
                         </form>
-
+                        
+                        @foreach ($article->reviewers as $user)
+                            <span class="badge badge-primary"> {{ $user->user->name }} </span>
+                        @endforeach
+                    
                     </div>
                 </div>
             @endforeach

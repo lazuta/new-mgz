@@ -8,7 +8,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-       @foreach ($users as $user)
+        @foreach ($users as $user)
             @if(empty($user->reviewer))
                 <div class="card w-75">
                     <div class="card-body">
@@ -31,7 +31,6 @@
                     </div>
                 </div>
             @elseif($user->reviewer == true)
-                <h3>Одобренные кандидаты</h3>
                 <div class="card w-75">
                     <div class="card-body">
                         <h5 class="card-title">{{ $user->name }} (<small>{{ $user->email }}</small>)</h5>

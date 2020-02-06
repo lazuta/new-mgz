@@ -16,7 +16,7 @@ class CreateReviewersTypesTable extends Migration
         Schema::create('reviewers_types', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->boolean('subsidiary')->nullable();;
+            $table->boolean('subsidiary')->nullable();
             $table->timestamps();
         });
     }
