@@ -93,7 +93,7 @@
                                     <a class="dropdown-item" href="{{ route('article.show') }}">Статьи</a>
                                     <a class="dropdown-item" href="{{ route('article.create') }}">Создание статьи</a>
                                     <a class="dropdown-item" href="{{ route('category.show') }}">Категории</a>
-                                    <a class="dropdown-item" href="{{ route('article.store') }}">Создание категории</a>
+                                    <a class="dropdown-item" href="{{ route('category.create') }}">Создание категории</a>
                                     <hr>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

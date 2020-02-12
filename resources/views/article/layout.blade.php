@@ -35,7 +35,10 @@
                 
                 @if(Auth::user()->role == "corrector")
                     @include('comment.create')
+                @elseif(Auth::user()->role == "reviewer")
+                    @include('comment.review')
                 @endif
+                
             </div>
             @foreach ($comments as $comment)
             <div class="card comment-card">
