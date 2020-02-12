@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserReviewer extends Model
 {
+    protected $table = 'user_reviewers';
+
     protected $fillable = [
         'user_id', 'reviewers_id'
     ];
@@ -17,6 +19,6 @@ class UserReviewer extends Model
 
     public function review()
     {
-        return $this->belongsTo('App\Reviewer', 'reviews_id', 'id');
+        return $this->belongsTo('App\Reviewer', 'reviewers_id', 'id');
     }
 }

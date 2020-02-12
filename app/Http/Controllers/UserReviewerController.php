@@ -10,7 +10,7 @@ class UserReviewerController extends Controller
     public function approving(Request $request)
     {   
         $validatedData = $request->validate([
-            'rewiewer' => ['required']
+            'rewiewer' => 'required'
         ],[
             'rewiewer.required' => 'Выберите рецензента.'
         ]);

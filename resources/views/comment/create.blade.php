@@ -17,9 +17,9 @@
         <div class="form-group">
             <select class="form-control" name="approved">
                 <option disabled selected>Решение</option>
-                <option value="1">Допустить к публикаиции</option>
-                <option value="0">Отказать в публикаиции</option>
-                <option value="2">Требутеся доработка</option>
+                <option value="1">Разрешается публикация без изменений</option>
+                <option value="0">Публикация не разрешается</option>
+                <option value="2">Разрешается публикация с незначительными изменениями</option>
             </select>
         </div>
         <button type="submit" class="btn btn-primary mb-2">Отправить</button>

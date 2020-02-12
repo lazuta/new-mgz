@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('article')->group(function() {
     Route::get('/', 'ArticlesController@show')->name('article.show');
     Route::get('/create', 'ArticlesController@create')->name('article.create');
-    Route::post('/storege', 'ArticlesController@store')->name('article.store');
+    Route::post('/store', 'ArticlesController@store')->name('article.store');
     Route::get('/{id}', 'ArticlesController@showArticle')->name('article.showArticle');
     Route::get('edit/{id}', 'ArticlesController@edit')->name('article.edit');
     Route::post('edit/save/{id}', 'ArticlesController@save')->name('article.edit.save');

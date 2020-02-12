@@ -15,9 +15,9 @@ class CreateUserReviewersTable extends Migration
     {
         Schema::create('user_reviewers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id')->nullable()->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->bigInteger('reviewers_id')->nullable()->unsigned();
+            $table->bigInteger('reviewers_id')->unsigned();
             $table->foreign('reviewers_id')->references('id')->on('reviews')->onDelete('cascade');
             $table->timestamps();
         });

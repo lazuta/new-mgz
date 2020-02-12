@@ -38,12 +38,15 @@ class UserController extends Controller
     public function appointment()
     {   
         $articles = Reviewer::all();
+        
+        $reviewers = UserReviewer::all()->groupBy('reviewers_id');
 
-        $rewiewers = User::where('reviewer', true)->get();
-       
+        $users = User::where('reviewer', true)->get();
+
         return view('users.appointment', [
+            'reviewers'=> $reviewers,
             'articles' => $articles,
-            'rewiewers' => $rewiewers
+            'users' => $users
         ]);
     }
 }

@@ -55,7 +55,7 @@ class ArticlesController extends Controller
         return view('article.create', ['categories' => $categories]);
     }
 
-    public function storege(Request $request)
+    public function store(Request $request)
     {
         $validatedData = $request->validate([
             'title' => ['required', 'string', 'max:255'],
@@ -81,7 +81,8 @@ class ArticlesController extends Controller
         File::create([
             'file_path' => $path,
             'upload_at' => date('Y-m-d G:i:s'),
-            'article_id' => $article->id
+            'article_id' => $article->id,
+            'pdf_path' => $path
         ]);
 
         Reviewer::create([

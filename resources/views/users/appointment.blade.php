@@ -20,8 +20,8 @@
                             <div class="form-group">
                                 <select class="form-control" name="rewiewer">
                                     <option selected disabled>Выберите рецензента</option>
-                                    @foreach ($rewiewers as $rewiewer)
-                                        <option value="{{ $rewiewer->id }}"> {{ $rewiewer->name }} </option>
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->id }}"> {{ $user->name }} </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -30,8 +30,12 @@
                             </div>
                         </form>
                         
-                        @foreach ($article->reviewers as $user)
-                            <span class="badge badge-primary"> {{ $user->user->name }} </span>
+                        @foreach ($reviewers as $key=>$reviewer)
+                            @if($article->id == $key)
+                                @foreach ($reviewer as $user)
+                                <span class="badge badge-primary"> {{ $user->user->name }} </span>
+                                @endforeach
+                            @endif
                         @endforeach
                     
                     </div>
