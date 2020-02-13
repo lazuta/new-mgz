@@ -8,6 +8,7 @@ use App\Comment;
 use App\Article;
 use App\Reviewer;
 use App\RewiewerType;
+use App\ArticleReview;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,8 +37,14 @@ class ArticlesController extends Controller
         $article = Article::find($id);
 
         $comments = Comment::where('reviews_id', $id)->orderBy('created_at','DESC')->get();
+
+        $reviews = ArticleReview::where('reviews_id', $id);
                 
-        return view('article.layout', ['article' => $article], ['comments' => $comments]);
+        return view('article.layout', 
+            ['article' => $article],
+            ['comments' => $comments],
+            ['reviews' => $reviews]
+        );
     }
 
     public function create()
@@ -119,6 +126,7 @@ class ArticlesController extends Controller
 
             File::create([
                 'file_path' => $path,
+                'pdf_path' => $path,
                 'article_id' => $id
             ]);
         }

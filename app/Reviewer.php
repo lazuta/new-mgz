@@ -31,4 +31,9 @@ class Reviewer extends Model
     {
         return $this->hasMany('App\UserReviewer', 'id');
     }
+
+    public function review()
+    {
+        return $this->belongsTo('App\ArticleReview', 'reviews_id', 'id');
+    }
 }

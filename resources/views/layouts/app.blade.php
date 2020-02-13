@@ -54,6 +54,7 @@
         .navbar-brand {
             width: 35px;
         }
+
     </style>
 </head>
 <body>

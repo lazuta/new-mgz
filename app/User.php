@@ -57,4 +57,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Reviewer', 'id');
     }
 
+    public function articleReview()
+    {
+        return $this->hasMany('App\ArticleReview', 'id');
+    }
+
 }

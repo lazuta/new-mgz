@@ -35,11 +35,13 @@
                 
                 @if(Auth::user()->role == "corrector")
                     @include('comment.create')
-                @elseif(Auth::user()->role == "reviewer")
+                @elseif(Auth::user()->role == "reviewer" &&
+                        Auth::user()->reviewer)
                     @include('comment.review')
                 @endif
                 
             </div>
+
             @foreach ($comments as $comment)
             <div class="card comment-card">
                 <div class="card-header d-flex justify-content-between">
@@ -61,6 +63,7 @@
                 </div>
             </div>
             @endforeach
+            
         </div>
     </div>
 </div>

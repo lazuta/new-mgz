@@ -44,8 +44,10 @@ Route::prefix('users')->group(function() {
 
 Route::prefix('reviewer')->group(function() {
     Route::post('/', 'ReviewersController@articles')->name('reviewer.articles');
+    Route::post('/review', 'ArticleReviewController@review')->name('reviewer.review');
 });
 
 Route::prefix('message')->group(function() {
     Route::post('/store', 'CommentsController@store')->name('comment.store');
 });
+

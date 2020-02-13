@@ -14,4 +14,9 @@ class File extends Model
     {
         return $this->belongsTo('App\Article', 'article_id', 'id');
     }
+
+    public function review()
+    {
+        return $this->belongsTo('App\ArticleReview', 'file_id', 'id');
+    }
 }
