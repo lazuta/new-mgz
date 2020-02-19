@@ -30,7 +30,7 @@
                             </div>
                         </form>
                         
-                        @foreach ($reviewers as $key=>$reviewer)
+                        @foreach ($reviewers as $key => $reviewer)
                             @if($article->id == $key)
                                 @foreach ($reviewer as $user)
                                 <span class="badge badge-primary"> {{ $user->user->name }} </span>

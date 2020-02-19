@@ -9,7 +9,7 @@
 
             <div class="card">
                 <div class="card-header d-flex justify-content-between"> {{ $article->title }} 
-                    @if($article->user->id == Auth::id())
+                    @if ($article->user->id == Auth::id())
                         <a href="{{ route('article.edit', $article->id) }}">Изменить</a>
                     @endif
                 </div>
