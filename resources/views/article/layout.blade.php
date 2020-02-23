@@ -14,11 +14,16 @@
                     @endif
                 </div>
                 <div class="card-body">
+
                     <p>{{ $article->rewiewerType->title }}</p>
                     <p>{{ $article->reviewer->description }}</p>
+                    
                     @foreach ($article->file as $item)
                         <a href="{{ $item->file_path }}"> <p>Ссылка</p></a>
+                        {{-- TODO: only for revievers and admin --}}
+                        <a href="{{ $item->pdf_path }}"> <p>Ссылка PDF</p></a>
                     @endforeach
+
                     <p>
                         Текущая оценка:
                         @if ($article->reviewer->mark == 3)

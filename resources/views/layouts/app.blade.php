@@ -55,6 +55,10 @@
             width: 35px;
         }
 
+        .color-red {
+            color: red;
+        }
+
     </style>
 </head>
 <body>

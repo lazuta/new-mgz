@@ -15,7 +15,7 @@ class CommentsController extends Controller
 
     public function store(Request $request)
     {   
-        $validatedData = $request->validate([
+        $request->validate([
             'comment' => ['required', 'string', 'max:255']
         ],[
             'comment.required' => 'Комментарий не может быть пустым.',
@@ -24,10 +24,10 @@ class CommentsController extends Controller
            
         $approved = NULL;
 
-        if (!empty($request['approved']) || $request['approved'] != 2)
+        if (!empty($request['approved']) || $request['approved'] !== 2)
             $approved = $request['approved'];
         
-        $comment = Comment::create([
+        Comment::create([
             'body' => $request['comment'],
             'approved' => $approved,
             'reviews_id' => $request['id'],

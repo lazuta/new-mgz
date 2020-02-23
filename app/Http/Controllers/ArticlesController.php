@@ -36,7 +36,7 @@ class ArticlesController extends Controller
     {   
         $article = Article::find($id);
 
-        $comments = Comment::where('reviews_id', $id)->orderBy('created_at','DESC')->get();
+        $comments = Comment::where('reviews_id', $article->reviewer->id)->orderBy('created_at','DESC')->get();
 
         $reviews = ArticleReview::where('reviews_id', $id);
                 
@@ -67,16 +67,20 @@ class ArticlesController extends Controller
         $validatedData = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'category' => ['required'],
-            'file' => ['required', 'mimes:docx,pdf,doc,html'],
+            'file' => ['required', 'mimes:docx,doc,html'],
+            'pdf' => ['required', 'mimes:pdf']
         ],[
             'title.required' => 'Заголовок не может быть пустым.',
             'title.max' => 'Название статьи превышает 255 символов.',
             'category.required' => 'Категория не может быть пустой.',
             'file.required' => 'Выберите файл.',
             'file.mimes' => 'Недопустимый формат файла.',
+            'pdf.mimes' => 'Недопустимый формат файла. PDF'
         ]);
 
-        $path = '/storage/' . $request->file('file')->store('files', 'public');
+        $path = sprintf('/storage/%s', $request->file('file')->store('files', 'public'));
+        $path_pdf = sprintf('/storage/%s', $request->file('pdf')->store('files', 'public'));
+
         $categoryID = RewiewerType::find($request['category']);
 
         $article = Article::create([
@@ -89,7 +93,7 @@ class ArticlesController extends Controller
             'file_path' => $path,
             'upload_at' => date('Y-m-d G:i:s'),
             'article_id' => $article->id,
-            'pdf_path' => $path
+            'pdf_path' => $path_pdf
         ]);
 
         Reviewer::create([
@@ -122,11 +126,12 @@ class ArticlesController extends Controller
     {   
         if(!empty($request['file']))
         {
-            $path = '/storage/' . $request->file('file')->store('files', 'public');
+            $path = sprintf('/storage/%s', $request->file('file')->store('files', 'public'));
+            $path_pdf = sprintf('/storage/%s', $request->file('pdf')->store('files', 'public'));
 
             File::create([
                 'file_path' => $path,
-                'pdf_path' => $path,
+                'pdf_path' => $path_pdf,
                 'article_id' => $id
             ]);
         }

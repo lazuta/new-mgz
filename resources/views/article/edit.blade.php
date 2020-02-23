@@ -40,6 +40,10 @@
                             <label for="file">Загрузка файла</label>
                             <input type="file" class="form-control-file" name="file" id="file">
                         </div>
+                        <div class="form-group">
+                            <label for="file">Загрузка файла <b>PDF</b> <span class="color-red">*</span></label>
+                            <input type="file" class="form-control-file" name="pdf" id="file">
+                        </div>
                         <button type="submit" class="btn btn-primary mb-2">Создать статью</button>
                     </form>
                 </div>

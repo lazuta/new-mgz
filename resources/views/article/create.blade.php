@@ -13,11 +13,11 @@
                     <form action="{{ route('article.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label for="title">Заголовок статьи</label>
+                            <label for="title">Заголовок статьи <span class="color-red">*</span></label>
                             <input type="title" class="form-control" name="title" id="title" aria-describedby="title" placeholder="Введите заголовок">
                         </div>
                         <div class="form-group">
-                            <label for="category">Выбор категории</label>
+                            <label for="category">Выбор категории <span class="color-red">*</span></label>
                             <select class="form-control" name="category" required>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">
@@ -37,8 +37,12 @@
                             <textarea class="form-control" id="description" name="description" rows="3" maxlength="255"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="file">Загрузка файла</label>
+                            <label for="file">Загрузка файла <b>DOC</b>, HTML <span class="color-red">*</span></label>
                             <input type="file" class="form-control-file" name="file" id="file">
+                        </div>
+                        <div class="form-group">
+                            <label for="file">Загрузка файла <b>PDF</b> <span class="color-red">*</span></label>
+                            <input type="file" class="form-control-file" name="pdf" id="file">
                         </div>
                         <button type="submit" class="btn btn-primary mb-2">Создать статью</button>
                     </form>
