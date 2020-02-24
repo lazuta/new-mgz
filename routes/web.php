@@ -26,6 +26,7 @@ Route::prefix('article')->group(function() {
     Route::get('/{id}', 'ArticlesController@showArticle')->name('article.showArticle');
     Route::get('/edit/{id}', 'ArticlesController@edit')->name('article.edit');
     Route::post('/edit/save/{id}', 'ArticlesController@save')->name('article.edit.save');
+    // На рецензии
 });
 
 Route::prefix('category')->group(function() {

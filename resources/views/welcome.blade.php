@@ -8,12 +8,18 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <!-- Styles -->
         <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
             html, body {
-                background-color: #fff;
-                color: #636b6f;
+                background-color: #DBDBDB;
+                color: #1D3F75;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: auto;
@@ -66,17 +72,8 @@
                 position: relative;
             }
 
-            #description {
-                width: 100%;
-                overflow: hidden;
-                margin: 0 auto;
-                display: flex;
-                justify-content: center;
-                align-items: center
-            }
-
             #description > img {
-                width: 80%;
+                width: 100%;
             }
 
             .container-welcome {
@@ -87,6 +84,7 @@
 
             .center {
                 text-align: center;
+                margin-bottom: 20px;
             }
 
             .alfa {
@@ -109,6 +107,39 @@
                 line-height: 10px;
             }
 
+            .row-magazine {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                flex-direction: row;
+            }
+
+            .justify {
+                width: 90%;
+                display: flex;
+                align-items: center;
+                font-size: 16px;
+            }
+
+            .justify p {
+                text-align: justify;
+            }
+
+            .red {
+                font-size: 18px;
+                font-weight: bold;
+                color: red;
+            }
+
+            @media(max-width: 960px) {
+                .row-magazine {
+                    flex-direction: column;
+                }
+
+                .justify {
+                    width: 100%;
+                }
+            }
         </style>
     </head>
     <body>
@@ -145,17 +176,58 @@
                 V
             </div>
         </div>
-        <div class="d-flex flex-column full-height container-welcome">
+        <div class="d-flex flex-column  container-welcome">
             <div>
                 <h1 class="center">Научный журнал «Проблемы инфокоммуникаций» учрежден 25 июня 2015 года решением Совета УО ВГКС</h1>
             </div>
-            <div id="description">
-                <img src="{{ asset('images/magazine.png') }}" alt="">
+            <div class="row-magazine">
+                <div class="justify">
+                    <p>Предназначен для публикации материалов научно-практических исследований научных сотрудников, профессорско-преподавательского состава, студентов, магистрантов и аспирантов, а также специалистов, работающих в области электросвязи и почтовой связи. <br><br> Периодичность издания – 2 раза в год.
+                    </p>
+                </div>
+                <div id="description">
+                    <img src="{{ asset('images/magazine.png') }}" alt="">
+                </div>
             </div>
             <div>
-                <p class="center">Предназначен для публикации материалов научно-практических исследований научных сотрудников, профессорско-преподавательского состава, студентов, магистрантов и аспирантов, а также специалистов, работающих в области электросвязи и почтовой связи.</p>
+                <p>В журнале публикуются материалы, относящиеся к следующим отраслям знания: </p>
+                <ul>
+                    <li>Цифровая связь (Digital Communications);</li>
+                    <li>Вычислительные системы и сети (Computing Systems and Networks);</li>
+                    <li>Информационная безопасность (Information Security);</li>
+                    <li>Технологии связи (Communication Technologies);</li>
+                    <li>Радиотехника и электроника (Radio Engineering and Electronics);</li>
+                    <li>Киберфизические системы (Cyberphysical Systems);</li>
+                    <li>Экономика и управление в отрасли связи (Economicsand Managementinthe Telecommunications Industry);</li>
+                    <li>Почтовая связь (Postal Services).</li>
+                </ul>
             </div>
         </div>
-        
+        <div class="d-flex flex-column full-height container-welcome">
+            <hr>
+            <div>
+                <h1>Связь с разработчиками</h1>
+                <p><span class="red">(!)</span> Данный блок предназначен для <i>тестировщиков</i>. В релизной версии проекта его <strong>не будет</strong>.</p>
+                <p>
+                    <i>Дизайн сайта находится в разработке. В версии 0.0.16 представлен исключительно функционал ресурса.</i><br>
+                    <i>Подтверждение почты, после регистрации отключено.</i><br>
+                    <i>Роли: администратор, корректор, рецензент и автор.</i>
+                    <i></i>
+                </p>
+            </div>
+            
+            <div style="text-align: center; font-size: 30px; margin-top: 30px;">
+                В случае возникновения вопросов, предложений и т.п. - обращайтесь
+                <div style="margin-top: 30px;">
+                    <p>Telegarm: <a href="tg://resolve?domain=lyavontiy">клик</a></p>
+                    <p>VK: <a href="https://vk.com/lyavontiy">жмяк</a></p>
+                    <p>Mail: <a href="mailto:lenya.lazuta@mail.ru">тык</a></p>
+                </div>
+            </div>
+
+            <div style="text-align: center; font-size: 70px; margin-top: 20%; font-weight: bold;">
+                Спасибо!!!
+            </div>
+        </div>
     </body>
 </html>

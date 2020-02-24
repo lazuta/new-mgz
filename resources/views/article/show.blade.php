@@ -10,10 +10,12 @@
                 <div class="card-body">
                     <div class="list-group">
                         @foreach ($articles as $article)
-                        <a href="{{ route('article.showArticle', $article->id) }}" class="list-group-item d-flex justify-content-between align-items-center">
-                                {{ $article->title }}
-                                <span class="badge badge-primary badge-pill">{{ $article->status }}</span>
-                            </a>
+                            @if ($article->user->id == Auth::id() && Auth::user()->role === "author")
+                                <a href="{{ route('article.showArticle', $article->id) }}" class="list-group-item d-flex justify-content-between align-items-center">
+                                        {{ $article->title }}
+                                        <span class="badge badge-primary badge-pill">{{ $article->status }}</span>
+                                </a>
+                            @endif
                         @endforeach
                     </div>
                     <br>

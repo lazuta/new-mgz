@@ -95,15 +95,28 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('article.show') }}">Статьи</a>
-                                    <a class="dropdown-item" href="{{ route('article.create') }}">Создание статьи</a>
-                                    <a class="dropdown-item" href="{{ route('category.show') }}">Категории</a>
-                                    <a class="dropdown-item" href="{{ route('category.create') }}">Создание категории</a>
+
+                                    @if(Auth::user()->role === 'author')
+                                        <a class="dropdown-item" href="{{ route('article.create') }}">Создание статьи</a>
+                                        <a class="dropdown-item" href="{{ route('article.show') }}">Мои статьи</a>
+                                    @elseif(Auth::user()->role === 'reviewer')
+                                        <a class="dropdown-item" href="{{ route('article.create') }}">Статьи на рецензии</a>
+                                    @else
+                                        <a class="dropdown-item" href="{{ route('category.show') }}">Категории</a>
+                                        <a class="dropdown-item" href="{{ route('category.create') }}">Создание категории</a>
+                                    @endif
+                                    
+                                    @if(Auth::user()->role === 'admin')
+                                        <a class="dropdown-item" href="{{ route('article.create') }}">Статьи на рецензии</a>
+                                        <a class="dropdown-item" href="{{ route('users.appointment') }}">Рецензенты</a>
+                                        <a class="dropdown-item" href="{{ route('users.approvin') }}">Назначение рецензента</a>
+                                    @endif
+
                                     <hr>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Выйти') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
