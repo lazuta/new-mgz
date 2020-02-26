@@ -109,7 +109,7 @@
                                     @if(Auth::user()->role === 'admin')
                                         <a class="dropdown-item" href="{{ route('article.create') }}">Статьи на рецензии</a>
                                         <a class="dropdown-item" href="{{ route('users.appointment') }}">Рецензенты</a>
-                                        <a class="dropdown-item" href="{{ route('users.approvin') }}">Назначение рецензента</a>
+                                        {{-- <a class="dropdown-item" href="{{ route('users.approving') }}">Назначение рецензента</a> --}}
                                     @endif
 
                                     <hr>
