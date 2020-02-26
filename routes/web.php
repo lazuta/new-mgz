@@ -29,13 +29,13 @@ Route::prefix('article')->group(function() {
     // На рецензии
 });
 
-Route::prefix('category')->group(function() {
+Route::prefix('category')->middleware('corrector')->group(function() {
     Route::get('/', 'RewiewersTypesController@show')->name('category.show');
     Route::get('/create', 'RewiewersTypesController@create')->name('category.create');
     Route::post('/store', 'RewiewersTypesController@store')->name('category.store');
 });
 
-Route::prefix('users')->group(function() {
+Route::prefix('users')->middleware('admin')->group(function() {
     Route::get('/', 'UserController@show')->name('users.show');
     Route::post('/approve/{id}', 'UserController@approve')->name('users.approve');
     Route::post('/denied/{id}', 'UserController@denied')->name('users.denied');
@@ -43,7 +43,7 @@ Route::prefix('users')->group(function() {
     Route::post('/approving', 'UserReviewerController@approving')->name('users.approving');
 });
 
-Route::prefix('reviewer')->group(function() {
+Route::prefix('reviewer')->middleware('reviewer')->group(function() {
     Route::post('/', 'ReviewersController@articles')->name('reviewer.articles');
     Route::post('/review', 'ArticleReviewController@review')->name('reviewer.review');
 });
