@@ -18,7 +18,7 @@
             }
 
             html, body {
-                background-color: #DBDBDB;
+                background-color: #F9F9F9;
                 color: #1D3F75;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;

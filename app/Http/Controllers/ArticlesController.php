@@ -24,7 +24,7 @@ class ArticlesController extends Controller
                 $article->status = "Ожидает просмотра";
             } elseif($article->posted = 1) {
                 $article->status = "Одобрено к публикации";
-            } else {
+            } elseif($article->posted = 3) {
                 $article->status = "Не одобрено к публикации";
             }
         }

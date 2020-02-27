@@ -18,9 +18,9 @@ class UserController extends Controller
         return view('users.show', ['users' => $users]);
     }
 
-    public function approve(Request $request, User $user)
-    {      
-        $user->update(['reviewer' => true]);
+    public function approve(Request $request, $user)
+    {           
+        User::find($user)->update(['reviewer' => true]);
 
         return redirect()->route('users.show');
     }

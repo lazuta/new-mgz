@@ -8,20 +8,22 @@
             @include('components.errors')
 
             <div class="card">
-                <div class="card-header d-flex justify-content-between"> {{ $article->title }} 
+                <div class="card-header d-flex justify-content-between"> Статья: {{ $article->title }} 
                     @if ($article->user->id == Auth::id())
                         <a href="{{ route('article.edit', $article->id) }}">Изменить</a>
                     @endif
                 </div>
                 <div class="card-body">
 
-                    <p>{{ $article->rewiewerType->title }}</p>
-                    <p>{{ $article->reviewer->description }}</p>
+                    <p>Категория: <i>{{ $article->rewiewerType->title }}</i></p>
+                    <p><i>{{ $article->reviewer->description }}</i></p>
                     
                     @foreach ($article->file as $item)
-                        <a href="{{ $item->file_path }}"> <p>Ссылка</p></a>
-                        {{-- TODO: only for revievers and admin --}}
-                        <a href="{{ $item->pdf_path }}"> <p>Ссылка PDF</p></a>
+                        <a href="{{ $item->file_path }}"> <p>Ссылка на скачивания файла</p></a>
+
+                        @if(Auth::user()->role === 'reviewer' || Auth::user()->role === 'admin')
+                            <a href="{{ $item->pdf_path }}"> <p>Ссылка на скачивание файла в формате PDF</p></a>
+                        @endif
                     @endforeach
 
                     <p>

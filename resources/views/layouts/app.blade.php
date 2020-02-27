@@ -15,6 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -91,10 +92,16 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    @if(Auth::user()->role === 'admin')
+                                        <i class="fas fa-star" title="Super administrator"></i>
+                                    @elseif(Auth::user()->role === 'corrector')
+                                        <i class="far fa-edit" title="Corrector"></i>
+                                    @endif
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('home') }}">Панель управления</a>
 
                                     @if(Auth::user()->role === 'author')
                                         <a class="dropdown-item" href="{{ route('article.create') }}">Создание статьи</a>
@@ -102,14 +109,14 @@
                                     @elseif(Auth::user()->role === 'reviewer')
                                         <a class="dropdown-item" href="{{ route('article.create') }}">Статьи на рецензии</a>
                                     @else
+                                        <a class="dropdown-item" href="{{ route('article.show') }}">Статьи</a>
                                         <a class="dropdown-item" href="{{ route('category.show') }}">Категории</a>
                                         <a class="dropdown-item" href="{{ route('category.create') }}">Создание категории</a>
                                     @endif
                                     
                                     @if(Auth::user()->role === 'admin')
-                                        <a class="dropdown-item" href="{{ route('article.create') }}">Статьи на рецензии</a>
-                                        <a class="dropdown-item" href="{{ route('users.appointment') }}">Рецензенты</a>
-                                        {{-- <a class="dropdown-item" href="{{ route('users.approving') }}">Назначение рецензента</a> --}}
+                                        <a class="dropdown-item" href="{{ route('users.show') }}">Рецензенты</a>
+                                        <a class="dropdown-item" href="{{ route('users.appointment') }}">Статьи на рецензии</a>
                                     @endif
 
                                     <hr>
