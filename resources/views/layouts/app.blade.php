@@ -60,6 +60,18 @@
             color: red;
         }
 
+        .upper-bold {
+            text-transform: uppercase;
+            text-decoration: none;
+            color: black;
+            line-height: 14px;
+        }
+
+        .upper-bold:hover {
+            text-decoration: none;
+            color: #7bb57b;
+        }
+
     </style>
 </head>
 <body>
@@ -67,6 +79,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <img class="navbar-brand" src="http://bsac.by/themes/custom/bsac/img/logo/bsac_logo.svg">
+                <a href="{{ route('welcome') }}" class="upper-bold">Научный журнал <br> Проблемы инфокоммуникаций</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

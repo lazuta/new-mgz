@@ -35,7 +35,7 @@ class ArticlesController extends Controller
     public function showArticle($id)
     {   
         $article = Article::find($id);
-
+        
         $comments = Comment::where('reviews_id', $article->reviewer->id)->orderBy('created_at','DESC')->get();
 
         $reviews = ArticleReview::where('reviews_id', $id);

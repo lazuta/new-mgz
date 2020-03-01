@@ -159,8 +159,8 @@
             @endif
 
             <div class="content">
-                <span class="alfa">ALFA</span><br>
-                <span class="alfa-version">version 0.0.16</span>
+                {{-- <span class="alfa">ALFA</span><br>
+                <span class="alfa-version">version 0.0.16</span> --}}
 
                 <div class="title m-b-md">
                     Проблемы инфокоммуникаций
