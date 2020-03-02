@@ -21,10 +21,17 @@
                                 <a href="{{ route('article.showArticle', $article->id) }}" class="list-group-item d-flex justify-content-between align-items-center">
                                     {{ $article->title }}
                                 </a>
-                            @elseif(Auth::user()->role === 'reviewer')
-
                             @endif
                         @endforeach
+
+                        @if(Auth::user()->role === 'reviewer')
+                            @foreach ($reviewsArticle as $article)
+                                <a href="{{ route('article.showArticle', $article->review->article->id) }}" class="list-group-item d-flex justify-content-between align-items-center">
+                                {{ $article->review->article->title }}
+                                </a>
+                            @endforeach
+                        @endif
+                        
                     </div>
                     <br>
                     @if(Auth::user()->role === 'author' || Auth::user()->role === 'admin')

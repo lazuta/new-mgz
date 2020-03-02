@@ -7,6 +7,7 @@ use App\File;
 use App\Comment;
 use App\Article;
 use App\Reviewer;
+use App\UserReviewer;
 use App\RewiewerType;
 use App\ArticleReview;
 use Illuminate\Http\Request;
@@ -28,18 +29,26 @@ class ArticlesController extends Controller
                 $article->status = "Не одобрено к публикации";
             }
         }
+
+        if (Auth::user()->reviewer == true)
+        {
+            $reviewsArticle = UserReviewer::where('user_id', Auth::user()->id)->get();
+        }
         
-        return view('article.show', ['articles' => $articles]);
+        return view('article.show', [
+            'articles' => $articles,
+            'reviewsArticle' => $reviewsArticle
+            ]);
     }
 
     public function showArticle($id)
-    {   
+    {
         $article = Article::find($id);
-        
+
         $comments = Comment::where('reviews_id', $article->reviewer->id)->orderBy('created_at','DESC')->get();
 
         $reviews = ArticleReview::where('reviews_id', $id);
-                
+
         return view('article.layout', 
             ['article' => $article],
             ['comments' => $comments],

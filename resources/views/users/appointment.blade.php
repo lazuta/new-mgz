@@ -11,7 +11,7 @@
                 <div class="card w-75">
                     <div class="card-body">
                         <h5 class="card-title"><a href=" {{ route('article.showArticle', $article->article->id) }} ">{{ $article->article->title }}</a></h5>
-                        <h6 class="card-subtitle mb-2 text-muted">?Author?</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ $article->article->user->name }}</h6>
                         <p class="card-text">{{ $article->article->decription }}</p>
 
                         <form action="{{ route('users.approving') }}" method="POST">
