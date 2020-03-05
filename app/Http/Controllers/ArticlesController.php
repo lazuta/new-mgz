@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Auth;
 class ArticlesController extends Controller
 {
     public function show()
-    {           
+    {   
+        $reviewsArticle = null;        
+        
         $articles = Article::all();
 
         foreach ($articles as $article)
@@ -38,7 +40,7 @@ class ArticlesController extends Controller
         return view('article.show', [
             'articles' => $articles,
             'reviewsArticle' => $reviewsArticle
-            ]);
+        ]);
     }
 
     public function showArticle($id)

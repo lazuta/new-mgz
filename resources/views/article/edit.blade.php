@@ -29,7 +29,9 @@
                                 @endforeach
                             </select>
                             <small class="form-text text-muted">
-                                Добавление <i><a href="{{ route('category.create') }}">категории</a></i>
+                                @if(Auth::user()->role === 'corrector' || Auth::user()->role === 'admin')
+                                    Добавление <i><a href="{{ route('category.create') }}">категории</a></i>
+                                @endif
                             </small>
                         </div>
                         <div class="form-group">

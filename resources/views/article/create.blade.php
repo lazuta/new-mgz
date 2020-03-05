@@ -30,7 +30,7 @@
                             </select>
                             <small class="form-text text-muted">
                                 @if(Auth::user()->role === 'corrector' || Auth::user()->role === 'admin')
-                                Добавление <i><a href="{{ route('category.create') }}">категории</a></i>
+                                    Добавление <i><a href="{{ route('category.create') }}">категории</a></i>
                                 @endif
                             </small>
                         </div>

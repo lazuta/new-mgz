@@ -9,6 +9,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
         <!-- Styles -->
         <style>
             * {
@@ -107,6 +108,10 @@
                 line-height: 10px;
             }
 
+            .more i {
+                transform: rotate(90deg);
+            }
+
             .row-magazine {
                 width: 100%;
                 display: flex;
@@ -172,8 +177,7 @@
             </div>
 
             <div class="more">
-                V <br>
-                V
+                <i class="fas fa-angle-double-right"></i>
             </div>
         </div>
         <div class="d-flex flex-column  container-welcome">
