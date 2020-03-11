@@ -207,31 +207,6 @@
                 </ul>
             </div>
         </div>
-        <div class="d-flex flex-column full-height container-welcome">
-            <hr>
-            <div>
-                <h1>Связь с разработчиками</h1>
-                <p><span class="red">(!)</span> Данный блок предназначен для <i>тестировщиков</i>. В релизной версии проекта его <strong>не будет</strong>.</p>
-                <p>
-                    <i>Дизайн сайта находится в разработке. В версии 0.0.16 представлен исключительно функционал ресурса.</i><br>
-                    <i>Подтверждение почты, после регистрации отключено.</i><br>
-                    <i>Роли: администратор, корректор, рецензент и автор.</i>
-                    <i></i>
-                </p>
-            </div>
-            
-            <div style="text-align: center; font-size: 30px; margin-top: 30px;">
-                В случае возникновения вопросов, предложений и т.п. - обращайтесь
-                <div style="margin-top: 30px;">
-                    <p>Telegarm: <a href="tg://resolve?domain=lyavontiy">клик</a></p>
-                    <p>VK: <a href="https://vk.com/lyavontiy">жмяк</a></p>
-                    <p>Mail: <a href="mailto:lenya.lazuta@mail.ru">тык</a></p>
-                </div>
-            </div>
 
-            <div style="text-align: center; font-size: 70px; margin-top: 20%; font-weight: bold;">
-                Спасибо!!!
-            </div>
-        </div>
     </body>
 </html>
