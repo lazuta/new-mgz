@@ -158,4 +158,11 @@ class ArticlesController extends Controller
 
         return redirect()->route('article.showArticle', $id);
     }
+
+    public function delete(Request $request, $id)
+    {
+        Article::find($id)->delete();
+        
+        return redirect()->route('article.show');
+    }
 }

@@ -9,7 +9,11 @@
 
             <div class="card">
                 <div class="card-header d-flex justify-content-between"> Статья: {{ $article->title }} 
-                    @if ($article->user->id == Auth::id())
+                    @if ($article->user->id == Auth::id() || $article->user->role == 'admin')
+                        <form action="{{ route('article.delete', $article->id) }}">
+                            @csrf
+                            <button type="submit">Удалить</button>
+                        </form>
                         <a href="{{ route('article.edit', $article->id) }}">Изменить</a>
                     @endif
                 </div>
