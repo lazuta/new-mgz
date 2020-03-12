@@ -25,7 +25,7 @@
                     @foreach ($article->file as $item)
                         <a href="{{ $item->file_path }}"> <p>Ссылка на скачивания файла</p></a>
 
-                        @if(Auth::user()->role === 'reviewer' || Auth::user()->role === 'admin')
+                        @if(Auth::user()->role === 'reviewer' || Auth::user()->role === 'admin'|| $article->user->id == Auth::id())
                             <a href="{{ $item->pdf_path }}"> <p>Ссылка на скачивание файла в формате PDF</p></a>
                         @endif
                     @endforeach
