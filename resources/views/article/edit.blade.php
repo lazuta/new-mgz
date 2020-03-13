@@ -38,13 +38,21 @@
                             <label for="description">Описание</label>
                             <textarea class="form-control" id="description" name="description" rows="3" maxlength="255">{{ $article->reviewer->description }}</textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="file">Загрузка файла</label>
-                            <input type="file" class="form-control-file" name="file" id="file">
+
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="editFiles" onchange="openUploadFiles()">
+                            <label class="form-check-label" for="editFiles">Изменить файлы</label>
                         </div>
-                        <div class="form-group">
-                            <label for="file">Загрузка файла <b>PDF</b> <span class="color-red">*</span></label>
-                            <input type="file" class="form-control-file" name="pdf" id="file">
+
+                        <div class="newFile form-group">
+                            <div class="form-group">
+                                <label for="file">Загрузка файла</label>
+                                <input type="file" class="form-control-file" name="file" id="file file-edit">
+                            </div>
+                            <div class="form-group">
+                                <label for="file">Загрузка файла <b>PDF</b> <span class="color-red">*</span></label>
+                                <input type="file" class="form-control-file" name="pdf" id="file file-edit">
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary mb-2">Создать статью</button>
                     </form>

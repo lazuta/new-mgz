@@ -72,6 +72,9 @@
             color: #7bb57b;
         }
 
+        .newFile {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -165,6 +168,22 @@
             $("#success-alert").fadeTo(5000, 500).slideUp(500, function(){
                 $("#success-alert").slideUp(500);
             });
+
+            function openUploadFiles() {
+                let mode = document.querySelector('#editFiles').checked;
+                let window = document.querySelector('.newFile');
+                let fields = document.querySelectorAll('#file-edit');
+
+                if(mode) {
+                    window.style.display = 'block';
+                }
+                else {
+                    window.style.display = 'none';
+                    fields.forEach(el => {
+                        el.value = 'null';
+                    });
+                }
+            }
         </script>
     </footer>
 </body>
