@@ -13,7 +13,7 @@ class Article extends Model
 
     public function rewiewerType()
     {
-        return $this->belongsTo('App\RewiewersTypes', 'reviewers_types_id', 'id');
+        return $this->belongsTo('App\RewiewerType', 'reviewers_types_id', 'id');
     }
 
     public function file()

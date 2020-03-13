@@ -10,14 +10,33 @@
                 <div class="card-body">
                     <div class="list-group">
                         @foreach ($articles as $article)
-                        <a href="{{ route('article.showArticle', $article->id) }}" class="list-group-item d-flex justify-content-between align-items-center">
-                                {{ $article->title }}
-                                <span class="badge badge-primary badge-pill">{{ $article->status }}</span>
-                            </a>
+                            @if(Auth::user()->role === 'author')
+                                @if ($article->user->id == Auth::id() && Auth::user()->role === "author")
+                                    <a href="{{ route('article.showArticle', $article->id) }}" class="list-group-item d-flex justify-content-between align-items-center">
+                                            {{ $article->title }}
+                                            {{-- <span class="badge badge-primary badge-pill">{{ $article->status }}</span> --}}
+                                    </a>
+                                @endif
+                            @elseif(Auth::user()->role === 'corrector' || Auth::user()->role === 'admin')
+                                <a href="{{ route('article.showArticle', $article->id) }}" class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ $article->title }}
+                                </a>
+                            @endif
                         @endforeach
+
+                        @if(Auth::user()->role === 'reviewer' && Auth::user()->reviewer === true)
+                            @foreach ($reviewsArticle as $article)
+                                <a href="{{ route('article.showArticle', $article->review->article->id) }}" class="list-group-item d-flex justify-content-between align-items-center">
+                                {{ $article->review->article->title }}
+                                </a>
+                            @endforeach
+                        @endif
+                        
                     </div>
                     <br>
-                    <a class="btn btn-primary" role="button"  href="{{ route('article.create') }}">Создать статью </a>
+                    @if(Auth::user()->role === 'author' || Auth::user()->role === 'admin')
+                        <a class="btn btn-primary" role="button"  href="{{ route('article.create') }}">Создать статью </a>
+                    @endif
                 </div>
             </div>
         </div>

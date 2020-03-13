@@ -15,7 +15,7 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('description');
+            $table->string('description', 255)->nullable();
             $table->boolean('mark')->nullable();
             $table->bigInteger('user_id')->nullable()->unsigned();
             $table->bigInteger('article_id')->nullable()->unsigned();
@@ -30,7 +30,7 @@ class CreateReviewsTable extends Migration
      * @return void
      */
     public function down()
-    {
+    {   
         Schema::dropIfExists('reviews');
     }
 }

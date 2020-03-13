@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
-{   
-    protected $table = 'comments';
+class UserReviewer extends Model
+{
+    protected $table = 'user_reviewers';
 
     protected $fillable = [
-        'body', 'approved', 'reviews_id', 'user_id'
+        'user_id', 'reviewers_id'
     ];
 
     public function user()
@@ -19,6 +19,6 @@ class Comment extends Model
 
     public function review()
     {
-        return $this->belongsTo('App\Reviewer', 'reviews_id', 'id');
+        return $this->belongsTo('App\Reviewer', 'reviewers_id', 'id');
     }
 }

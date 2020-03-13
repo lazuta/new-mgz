@@ -38,7 +38,7 @@ class RewiewersTypesController extends Controller
             'category.max' => 'Название категории превышает 255 символов.'
         ]);
 
-        if(isset($request['subcategory']))
+        if (isset($request['subcategory']))
         {
             RewiewerType::create([
                 'title' => $request['subcategory'],
