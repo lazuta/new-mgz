@@ -122,7 +122,7 @@
                                     @if(Auth::user()->role === 'author')
                                         <a class="dropdown-item" href="{{ route('article.create') }}">Создание статьи</a>
                                         <a class="dropdown-item" href="{{ route('article.show') }}">Мои статьи</a>
-                                    @elseif(Auth::user()->role === 'reviewer' || Auth::user()->reviewer === true)
+                                    @elseif(Auth::user()->role === 'reviewer' && Auth::user()->reviewer === true)
                                         <a class="dropdown-item" href="{{ route('article.show') }}">Статьи на рецензии</a>
                                     @else
                                         <a class="dropdown-item" href="{{ route('category.show') }}">Категории</a>
