@@ -122,15 +122,19 @@ body {
 }
 
 
-@media(max-width: 760px) {
+@media(max-width: 730px) {
     .magazine-tmp {
-        max-height: 300px;
+        max-height: 600px;
+    }
+
+    .banner-title h1 {
+        font-size: 35px;
     }
 }
 
 @media(max-width: 670px) {
     .banner-title h1 {
-        font-size: 40px;
+        font-size: 30px;
     }
 }
 
@@ -140,12 +144,12 @@ body {
     }
 }
 
-@media(max-width: 450px) {
+@media(max-width: 500px) {
     .banner-title h1 {
-        font-size: 20px;
+        font-size: 25px;
     }
 
     .magazine-tmp {
-        max-height: 200px;
+        max-height: 400px;
     }
 }
