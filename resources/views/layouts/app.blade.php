@@ -64,7 +64,7 @@
             text-transform: uppercase;
             text-decoration: none;
             color: black;
-            line-height: 14px;
+            line-height: 16px;
         }
 
         .upper-bold:hover {
