@@ -114,11 +114,11 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: 30px 0px 20px 0px;
+    margin: 30px 0px 30px 0px;
 }
 
 .magazine-tmp {
-    max-height: 560px;
+    max-height: 630px;
 }
 
 

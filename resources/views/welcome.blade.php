@@ -45,7 +45,7 @@
                 <h1>Проблемы инфокоммуникаций</h1>
             </div>
             <div class="tmp">
-                <img src="{{ asset('images/magazine.png') }}" alt="Magazine" class="magazine-tmp">
+                <img src="{{ asset('images/mgz-w.png') }}" alt="Magazine" class="magazine-tmp">
             </div>
             <div class="banner-title">
                 <p>Научный журнал</p>
