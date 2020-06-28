@@ -13,8 +13,17 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    
+                    @if(Auth::user()->role === "reviewer" && empty(Auth::user()->reviewer))
+                        Уважаемый(ая), <i>{{ Auth::user()->name }}</i>, роль "Рецензент" требует подтверждения админитсрацией ресурса. <br>
+                        Благодарим за проявленное терпение!
+                    @endif
 
-                    Вы авторизированы!
+                    <h3>Информация по аккаунту</h3>
+                    <b>Роль:</b> {{ Auth::user()->role }} <br>
+                    <b>ФИО:</b> {{ Auth::user()->name }} <br>
+                    <b>Email:</b> {{ Auth::user()->email }} <br>
+                    <b>Cтатус аккаунта:</b> Активен <br> 
                 </div>
             </div>
         </div>

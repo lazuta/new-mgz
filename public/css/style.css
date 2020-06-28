@@ -89,7 +89,7 @@ body {
     padding: 10px;
     width: 100%;
     font-family: 'Nunito', sans-serif;
-    height: 100%;
+    height: calc(100vh - 140px);
     align-items: center;
 } 
 
