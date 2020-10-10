@@ -49,12 +49,14 @@ class ArticlesController extends Controller
 
         $comments = Comment::where('reviews_id', $article->reviewer->id)->orderBy('created_at','DESC')->get();
 
-        $reviews = ArticleReview::where('reviews_id', $id);
+        $reviews = ArticleReview::where('reviews_id', $id)->orderBy('id','DESC')->get();
 
         return view('article.layout', 
-            ['article' => $article],
-            ['comments' => $comments],
-            ['reviews' => $reviews]
+            [
+                'article' => $article,
+                'comments' => $comments,
+                'reviews' => $reviews
+            ]
         );
     }
 

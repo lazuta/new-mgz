@@ -24,7 +24,7 @@
                             @endif
                         @endforeach
 
-                        @if(Auth::user()->role === 'reviewer' && Auth::user()->reviewer === true)
+                        @if(Auth::user()->role === 'reviewer' && !empty(Auth::user()->reviewer))
                             @foreach ($reviewsArticle as $article)
                                 <a href="{{ route('article.showArticle', $article->review->article->id) }}" class="list-group-item d-flex justify-content-between align-items-center">
                                 {{ $article->review->article->title }}

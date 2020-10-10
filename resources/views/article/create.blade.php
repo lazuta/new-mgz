@@ -1,11 +1,8 @@
-@extends('layouts.app')
+@extends('admin.admin')
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-
-            @include('components.errors')
+    @include('components.errors')
 
             <div class="card">
                 <div class="card-header">Создание статьи</div>
@@ -50,8 +47,6 @@
                         <button type="submit" class="btn btn-primary mb-2">Создать статью</button>
                     </form>
                 </div>
-            </div>
-        </div>
     </div>
 </div>
 @endsection
