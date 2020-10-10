@@ -16,6 +16,10 @@ body {
     background-color: var(--color-white);
 }
 
+#welcome {
+    overflow: hidden;
+}
+
 .header-welcome {
     width: 100%;
     background-color: var(--color-blue);

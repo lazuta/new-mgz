@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ URL::asset('/css/style.css') }}">
     </head>
-    <body>
+    <body id="welcome">
         <header class="header-welcome">
             <nav id="container" class="nav-welcome">
                 <div class="header-welcome_logo">
